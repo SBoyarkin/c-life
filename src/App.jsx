@@ -26,14 +26,33 @@ function App() {
     ])
 
     function removeNote(e) {
-        console.log(data)
-        const sidx = e.target.id
-        console.log(sidx, 'sidx')
-        const findx = data.findIndex(item => item.id == sidx);
-        console.log(findx)
+    const sidx = e.target.id;
+    const findx = data.findIndex(item => item.id == sidx);
 
+    if (findx !== -1) {
+
+        const actual_array = data.filter((_, index) => index !== findx);
+        console.log('Новый массив', actual_array);
+        updateHandler(actual_array)
+    }
     }
 
+    function createNote(e) {
+        e.preventDefault()
+
+        const uuid = self.crypto.randomUUID();
+
+        const fd = new FormData(e.target)
+        const entires = fd.entries()
+        console.log(entires)
+        const obj = Object.fromEntries(entires)
+        obj.id = uuid
+        const arr = [...data]
+        arr.push(obj)
+        console.log(arr)
+        updateHandler(arr)
+
+    }
     return (
         <>
             <Load/>
@@ -41,7 +60,7 @@ function App() {
                 {data.map(({id, content}) => <Note id={id} text={content} removeHandler={removeNote}/>)}
 
             </div>
-            <Input/>
+            <Input createHandler={createNote}/>
         </>
     )
 }

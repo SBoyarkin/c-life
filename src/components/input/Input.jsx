@@ -1,9 +1,12 @@
 import S from './input.module.css'
 
-export function Input() {
+export function Input({createHandler}) {
     return(
         <>
-            <textarea className={S.aria} placeholder='input text'></textarea>
+            <form className={S.inpitTextForm} onSubmit={createHandler}>
+                <textarea className={S.aria} name='content' placeholder='input text'></textarea>
+                <button type='submit'></button>
+            </form>
         </>
     )
 
