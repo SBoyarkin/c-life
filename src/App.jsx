@@ -1,35 +1,49 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './App.css'
+import {Note} from "./components/note/Note.jsx";
+import {Input} from "./components/input/Input.jsx";
+import {Load} from "./components/load/Load.jsx";
+import {useState} from "react";
 
 function App() {
-  const [count, setCount] = useState(0)
+    const  [data, updateHandler] = useState([
+        {
+            "id": 0,
+            "content": "То, что было введено в поле ввода 0"
+        },
+        {
+            "id": 1,
+            "content": "То, что было введено в поле ввода 1"
+        },
+        {
+            "id": 2,
+            "content": "То, что было введено в поле ввода 2"
+        },
+        {
+            "id": 3,
+            "content": "То, что было введено в поле ввода 3"
+        },
+    ])
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    function removeNote(e) {
+        console.log(data)
+        const sidx = e.target.id
+        console.log(sidx, 'sidx')
+        const findx = data.findIndex(item => item.id == sidx);
+        console.log(findx)
+
+    }
+
+    return (
+        <>
+            <Load/>
+            <div className='main'>
+                {data.map(({id, content}) => <Note id={id} text={content} removeHandler={removeNote}/>)}
+
+            </div>
+            <Input/>
+        </>
+    )
 }
 
 export default App

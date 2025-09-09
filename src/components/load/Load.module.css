@@ -1,0 +1,21 @@
+.btn {
+    border: solid 1px black;
+    border-radius: 100%;
+    width: 25px;
+    height: 25px;
+    color: red;
+    position: relative;
+    background-color: white;
+    user-select: none;
+    margin-left: 5px;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.ma0 {
+    margin: 0;
+}

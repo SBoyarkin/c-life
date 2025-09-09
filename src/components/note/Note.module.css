@@ -1,0 +1,24 @@
+.note {
+    border: solid 1px black;
+    padding: 5px;
+    width: 250px;
+    height: 200px;
+    margin: 10px;
+}
+
+.close {
+    border: solid 1px black;
+    border-radius: 100%;
+    width: 25px;
+    height: 25px;
+    color: red;
+    position: relative;
+    top: -20px;
+    left: 240px;
+    background-color: white;
+    user-select: none;
+}
+
+.close:hover {
+    background-color: #eaeaea;
+}
