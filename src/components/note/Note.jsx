@@ -7,6 +7,7 @@ export function Note({id, text, removeHandler}) {
         <div className={S.note} key={id}>
             <div className={S.close} id={id} onClick={removeHandler}>X</div>
             <div>{text}</div>
+
         </div>
         </>
     )

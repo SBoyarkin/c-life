@@ -5,7 +5,8 @@ export function Input({createHandler}) {
         <>
             <form className={S.inpitTextForm} onSubmit={createHandler}>
                 <textarea className={S.aria} name='content' placeholder='input text'></textarea>
-                <button type='submit'></button>
+                <button className={S.btn} type='submit'>      sdfsdfsdf            </button>
+
             </form>
         </>
     )
