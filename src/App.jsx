@@ -31,27 +31,27 @@ function App() {
         const uuid = self.crypto.randomUUID();
         const fd = new FormData(e.target)
         const entires = fd.entries()
-        console.log(entires)
         const obj = Object.fromEntries(entires)
         obj.id = uuid
         const arr = [...data]
-        axios.post(BASE_URL, obj)
-            .then(response => {
-                if (response.status === 204) {
-                    axios.get(BASE_URL)
-                        .then(response => {
-                            updateHandler(response.data)
-                            e.target.reset()
-                        })
-                        .catch(error => {
-                            console.error('Ошибка при получении данных:', error);
-                        });
-                }
-            })
-            .catch(error => {
-                console.error('Ошибка при создании записи:', error);
-            });
-
+        if (obj.content.length > 0) {
+            axios.post(BASE_URL, obj)
+                .then(response => {
+                    if (response.status === 204) {
+                        axios.get(BASE_URL)
+                            .then(response => {
+                                updateHandler(response.data)
+                                e.target.reset()
+                            })
+                            .catch(error => {
+                                console.error('Ошибка при получении данных:', error);
+                            });
+                    }
+                })
+                .catch(error => {
+                    console.error('Ошибка при создании записи:', error);
+                });
+        }
         updateHandler(arr)
 
     }
