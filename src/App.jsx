@@ -41,6 +41,7 @@ function App() {
                     axios.get(BASE_URL)
                         .then(response => {
                             updateHandler(response.data)
+                            e.target.reset()
                         })
                         .catch(error => {
                             console.error('Ошибка при получении данных:', error);
@@ -50,6 +51,7 @@ function App() {
             .catch(error => {
                 console.error('Ошибка при создании записи:', error);
             });
+
         updateHandler(arr)
 
     }
